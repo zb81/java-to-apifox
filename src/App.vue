@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { parse } from "./parser";
+import { computed, ref } from 'vue'
+import { parse } from './parser'
 
 const old = ref(`
 public class User {
@@ -15,25 +15,25 @@ public class User {
  private Double salary;
 
 }
-`);
-const res = computed(() => parse(old.value));
+`)
+const res = computed(() => parse(old.value))
 
-const showMessage = ref(false);
+const showMessage = ref(false)
 
 function copy() {
   if (res.value) {
-    navigator.clipboard.writeText(res.value);
-    showMessage.value = true;
+    navigator.clipboard.writeText(res.value)
+    showMessage.value = true
     setTimeout(() => {
-      showMessage.value = false;
-    }, 1000);
+      showMessage.value = false
+    }, 1000)
   }
 }
 </script>
 
 <template>
   <div class="app">
-    <textarea cols="70" rows="50" v-model="old"></textarea>
+    <textarea v-model="old" cols="70" rows="50"></textarea>
     <div>
       <textarea
         cols="70"
@@ -41,7 +41,9 @@ function copy() {
         :value="res"
         style="margin-left: 20px"
       ></textarea>
-      <button @click="copy">复制</button>
+      <button @click="copy">
+        复制
+      </button>
       <span v-show="showMessage">复制成功</span>
     </div>
   </div>

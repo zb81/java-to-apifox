@@ -65,7 +65,7 @@ function genJSON(propArr: string[]) {
     }
   }
 
-  return JSON.stringify(obj)
+  return JSON.stringify(obj, null, 2)
 }
 
 export function parse(str: string) {

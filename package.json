@@ -13,10 +13,13 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
-    "@zb980921/eslint-config-ts": "^0.1.0",
+    "@zb81/eslint-config-vue": "^0.3.0",
     "eslint": "^8.20.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
     "vue-tsc": "^0.38.4"
+  },
+  "eslintConfig": {
+    "extends": ["@zb81/vue"]
   }
 }
