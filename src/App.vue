@@ -5,15 +5,20 @@ import { parse } from './parser'
 const old = ref(`
 public class User {
  
- @Schema(description="用户名")
- private String username;
+  /**
+   * 姓名
+   */
+  private String username;
 
- @Schema(description="年龄")
- private Integer age;
+  /**
+   * 年龄
+   */
+  private Integer age;
 
- @Schema(description="薪资")
- private Double salary;
-
+  /**
+   * 薪资
+   */
+  private Double salary;
 }
 `)
 const res = computed(() => parse(old.value))
