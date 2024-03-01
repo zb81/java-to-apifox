@@ -1,8 +1,8 @@
 {
   "name": "java-model-parser",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
