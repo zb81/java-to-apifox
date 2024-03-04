@@ -1,0 +1,56 @@
+:root {
+  --bg: #fff;
+  --scrollbar: #eee;
+  --scrollbar-hover: #bbb;
+  --text-color: #333;
+}
+
+html.dark {
+  --bg: #000;
+  --scrollbar: #111;
+  --scrollbar-hover: #222;
+  --text-color: #fff;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+::selection {
+  background: #8884;
+}
+
+* {
+  scrollbar-color: var(--scrollbar) var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 4px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: var(--bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}

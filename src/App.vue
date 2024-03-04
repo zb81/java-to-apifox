@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { parse } from './parser'
+import { Button, ConfigProvider, Input, Space, theme } from 'ant-design-vue'
+import { useClipboard, useDark } from '@vueuse/core'
+import LayoutHeader from './components/LayoutHeader.vue'
+import { parse } from './utils/parser'
 
 const old = ref(`public class AnswerRecord {
     /**
@@ -44,42 +47,47 @@ const old = ref(`public class AnswerRecord {
      */
     private String tag;
 }`)
-
 const res = computed(() => parse(old.value))
 
-const showMessage = ref(false)
+const isDark = useDark()
 
-function copy() {
-  if (res.value) {
-    navigator.clipboard.writeText(res.value)
-    showMessage.value = true
-    setTimeout(() => {
-      showMessage.value = false
-    }, 1000)
-  }
-}
+const rows = ref(30)
+
+const { copied, isSupported, copy } = useClipboard({ source: res })
 </script>
 
 <template>
-  <div class="app">
-    <textarea v-model="old" cols="70" rows="50" />
-    <div>
-      <textarea
-        cols="70"
-        rows="50"
-        :value="res"
-        style="margin-left: 20px"
-      />
-      <button @click="copy">
-        复制
-      </button>
-      <span v-show="showMessage">复制成功</span>
+  <ConfigProvider :theme="{ algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm }">
+    <LayoutHeader />
+
+    <div class="px-4 grid grid-cols-2 gap-x-4">
+      <div>
+        <Space class="py-2">
+          <Button @click="old = ''">
+            清空
+          </Button>
+        </Space>
+        <Input.TextArea
+          v-model:value="old" class="text-nowrap" :rows="rows"
+        />
+      </div>
+
+      <div>
+        <Space class="py-2">
+          <Button v-if="isSupported" type="primary" @click="copy()">
+            <template v-if="copied" #icon>
+              <div class="mr-1 i-ant-design:check-outlined" />
+            </template>
+            {{ copied ? "已复制" : '复制结果' }}
+          </Button>
+        </Space>
+        <Input.TextArea
+          class="text-nowrap"
+          :value="res" :rows="rows" readonly
+        />
+      </div>
     </div>
-  </div>
+  </ConfigProvider>
 </template>
 
-<style>
-.app {
-  display: flex;
-}
-</style>
+<style lang="scss" scoped></style>

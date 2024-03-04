@@ -1,3 +1,4 @@
+import { message } from 'ant-design-vue'
 import type { ClassBodyCtx, UnannClassTypeCtx, VariableDeclaratorIdCtx } from 'java-parser'
 
 import {
@@ -63,9 +64,14 @@ const visitor = new JavaVisitor()
 
 export function parse(src: string) {
   visitor.reset()
-  const cst = parseJava(src)
 
-  visitor.visit(cst)
+  try {
+    const cst = parseJava(src)
+    visitor.visit(cst)
+  }
+  catch (e) {
+    message.error('解析失败')
+  }
 
   const ret: Result = { type: 'object', properties: {} }
   visitor.schemas.forEach((item) => {
