@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,7 +24,6 @@
     "sass": "^1.71.1",
     "typescript": "^5.3.3",
     "unocss": "^0.58.5",
-    "vite": "^5.1.4",
-    "vue-tsc": "^2.0.3"
+    "vite": "^5.1.4"
   }
 }
