@@ -1,5 +1,5 @@
 {
-  "name": "java-model-parser",
+  "name": "java-to-apifox",
   "type": "module",
   "version": "0.0.2",
   "private": true,
