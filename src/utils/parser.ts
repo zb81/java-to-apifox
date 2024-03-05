@@ -70,7 +70,8 @@ export function parse(src: string) {
     visitor.visit(cst)
   }
   catch (e) {
-    message.error('解析失败')
+    console.error(e)
+    message.error(`解析失败`)
   }
 
   const ret: Result = { type: 'object', properties: {} }
