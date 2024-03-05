@@ -51,8 +51,6 @@ const res = computed(() => parse(old.value))
 
 const isDark = useDark()
 
-const rows = ref(30)
-
 const { copied, isSupported, copy } = useClipboard({ source: res })
 </script>
 
@@ -70,7 +68,6 @@ const { copied, isSupported, copy } = useClipboard({ source: res })
         <Input.TextArea
           v-model:value="old"
           class="text-nowrap flex-1 font-[monospace]"
-          :rows="rows"
         />
       </div>
 
@@ -85,7 +82,7 @@ const { copied, isSupported, copy } = useClipboard({ source: res })
         </Space>
         <Input.TextArea
           class="text-nowrap flex-1 font-[monospace]"
-          :value="res" :rows="rows" readonly
+          :value="res" readonly
         />
       </div>
     </div>
