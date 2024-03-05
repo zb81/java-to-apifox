@@ -5,7 +5,7 @@ const appName = import.meta.env.VITE_APP_NAME
 </script>
 
 <template>
-  <div class="border-color border-b py-3 px-8 flex items-center justify-between">
+  <div class="h-[50px] border-color border-b px-8 flex items-center justify-between">
     <h1>{{ appName }}</h1>
     <div class="flex items-center gap-x-6 select-none">
       <ToggleDark />

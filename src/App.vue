@@ -60,20 +60,22 @@ const { copied, isSupported, copy } = useClipboard({ source: res })
   <ConfigProvider :theme="{ algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm }">
     <LayoutHeader />
 
-    <div class="px-4 grid grid-cols-2 gap-x-4">
-      <div>
-        <Space class="py-2">
+    <div class="h-[calc(100vh-50px)] overflow-hidden p-3 grid grid-cols-2 gap-x-4">
+      <div class="flex flex-col gap-y-3">
+        <Space class="flex-none">
           <Button @click="old = ''">
             清空
           </Button>
         </Space>
         <Input.TextArea
-          v-model:value="old" class="text-nowrap" :rows="rows"
+          v-model:value="old"
+          class="text-nowrap flex-1 font-[monospace]"
+          :rows="rows"
         />
       </div>
 
-      <div>
-        <Space class="py-2">
+      <div class="flex flex-col gap-y-3">
+        <Space class="flex-none">
           <Button v-if="isSupported" type="primary" @click="copy()">
             <template v-if="copied" #icon>
               <div class="mr-1 i-ant-design:check-outlined" />
@@ -82,7 +84,7 @@ const { copied, isSupported, copy } = useClipboard({ source: res })
           </Button>
         </Space>
         <Input.TextArea
-          class="text-nowrap"
+          class="text-nowrap flex-1 font-[monospace]"
           :value="res" :rows="rows" readonly
         />
       </div>
